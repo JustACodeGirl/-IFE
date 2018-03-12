@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans" xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
+	http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.0.xsd">
+
+	<!--JNDI环境 -->
+	<util:properties id="jndiEvn">
+		<prop key="java.naming.factory.initial">com.sun.enterprise.naming.SerialInitContextFactory
+		</prop>
+		<prop key="java.naming.factory.url.pkgs">com.sun.enterprise.naming</prop>
+		<prop key="java.naming.factory.state">com.sun.corba.ee.impl.presentation.rmi.JNDIStateFactoryImpl
+		</prop>
+		<!-- IIOP访问的服务器与端口，格式：(instance1:port1,instance2:port2) -->
+		<prop key="com.sun.appserv.iiop.endpoints">192.168.1.193:3700</prop>
+	</util:properties>
+
+	<!--服务器服务的EJB本地接口 -->
+	<jee:remote-slsb id="serverService"
+		jndi-name="java:global/ovdoorbell/ServerService!com.ovt.service.remote.ServerServiceRemote"
+		business-interface="com.ovt.service.remote.ServerServiceRemote"
+		cache-home="true" lookup-home-on-startup="true" resource-ref="true"
+		refresh-home-on-connect-failure="true" environment-ref="jndiEvn">
+	</jee:remote-slsb>
+
+	<!--设备服务的EJB本地接口 -->
+	<jee:remote-slsb id="deviceService"
+		jndi-name="java:global/ovdoorbell/DeviceService!com.ovt.service.remote.DeviceServiceRemote"
+		business-interface="com.ovt.service.remote.DeviceServiceRemote"
+		cache-home="true" lookup-home-on-startup="true" resource-ref="true"
+		refresh-home-on-connect-failure="true" environment-ref="jndiEvn">
+	</jee:remote-slsb>
+
+	<!--App服务的EJB本地接口 -->
+	<jee:remote-slsb id="appService"
+		jndi-name="java:global/ovdoorbell/AppService!com.ovt.service.remote.AppServiceRemote"
+		business-interface="com.ovt.service.remote.AppServiceRemote"
+		cache-home="true" lookup-home-on-startup="true" resource-ref="true"
+		refresh-home-on-connect-failure="true" environment-ref="jndiEvn">
+	</jee:remote-slsb>
+</beans>

@@ -1,0 +1,62 @@
+<div class="content" ng-controller="ConsultCreateCtrl">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="widget">
+        <a class="btn btn-primary btn-bl" ui-sref="consult.list">返回咨询列表</a>
+      </div>
+      <h1 class="widget" >新建咨询</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <form name="newConsult">
+        <div class="form-group">
+          <label for="title">标题(最多30字)</label>
+          <input type="text" id="title" class="form-control" ng-model="consult.title" name="input_maxlength" ng-maxlength="30" required/>
+          <span style="color: red" ng-show="newConsult.input_maxlength.$dirty && newConsult.input_maxlength.$invalid">长度超过30字，请精简标题长度</span>
+        </div>
+        <div class="form-group">
+          <label for="content">正文（最多500字）</label>
+          <textarea name="content"
+                    id="content"
+                    rows="20"
+                    class="form-control"
+                    ng-model="consult.content"
+                    ng-maxlength="500"
+                    required>
+          </textarea>
+          <span style="color: red" ng-show="newConsult.content.$dirty && newConsult.content.$invalid">长度超过500字，请缩短正文内容</span>
+        </div>
+        <div class="form-group widget">
+          <div class="row">
+            <div class="col-xs-6" ng-if="attachs[0]">
+              <label for="attach1">附图1：{{attachs[0].name}}</label>
+              <p class="attach" id="attach1" img-load ng-model="attachs[0].url"></p>
+              <button type="button" class="btn btn-default btn-xs" ng-click="attachs[0].remove();attachs[0]=null">
+                删除
+              </button>
+            </div>
+            <div class="col-xs-6" ng-if="attachs[1]">
+              <label for="attach2">附图2：{{attachs[1].name}}</label>
+              <p class="attach" id="attach2" img-load ng-model="attachs[1].url"></p>
+              <button type="button" class="btn btn-default btn-xs" ng-click="attachs[1].remove();attachs[1]=null">
+                删除
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="form-group widget">
+          <label for="file">添加附图（JPG/PNG/GIF，2 MB以内，限两张）</label>
+          <input id="file" nv-file-select uploader="uploader" type="file" accept="image/jpeg, image/gif, image/png"/>
+        </div>
+        <div class="form-group">
+          <button type="submit"
+                  class="btn btn-primary"
+                  ng-click="newConsult.$valid ? createConsult(consult, attachs) : null;">提交
+          </button>
+        </div>
+      </form>
+      <!--<div class="form-group widget">--><!--<form id="attachForm" action="/api/consult/upload" method="post" enctype="multipart/form-data">--><!--<label for="file">附图（JPG/PNG/GIF，2 MB以内）</label>--><!--<input id="file" name="file" type="file" accept="image/jpeg,image/gif,image/x-png"/>--><!--</form>--><!--</div>-->
+    </div>
+  </div>
+</div>

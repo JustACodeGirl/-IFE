@@ -1,0 +1,108 @@
+<div class="content" ng-controller="AfterSaleCtrl"
+     ng-init="asApplyTypes[asApply.applyType-1] =='退货'">
+    <div class="row" ng-if="app.user">
+        <div class="col-xs-12">
+            <div class="widget">
+                <a class="btn btn-primary btn-bl" ui-sref="aftersale.new">新建售后申请</a>
+            </div>
+            <div class="widget">
+                <div class="row m-b" ng-repeat="asApply in asApplyList | orderBy: 'status' | orderBy: 'createTime':true">
+                    <div class="item col-xs-10"
+                         style="border: 1px solid #e7e7e7; border-radius:5px; box-shadow: -1px 2px 2px -1px #ededed;"
+                         ng-click="showApplyDetail(asApply)">
+                        <div class="row m-t">
+                            <p class="col-xs-4">
+                                <label>申请状态:</label>
+                                <label class="label {{applyStatusColor[asApply.status]}}">{{asApplyStatus[asApply.status]}}</label>
+                            </p>
+                            <p class="col-xs-4" ng-if="asApply.status != 0 && asApply.serviceId">
+                                <label>受理人:</label>
+                                <span>客服{{asApply.serviceId}}</span>
+                            </p>
+                            <p class="col-xs-4 pull-right text-right" ng-if="(asApply.status != 0 || asApply.status != 4) && asApply.serviceId">
+                                <a ng-click="showProcessModal(asApply.serviceId);$event.stopPropagation();"
+                                   data-toggle="modal"
+                                   data-target="#showProcess">查看进度
+                                </a>
+                            </p>
+                        </div>
+                        <div class="row">
+                            <p class="col-xs-4">
+                                <label>商品:</label>
+                                <span>{{goodsList[asApply.goodsId-1].name}}</span>
+                            </p>
+                            <p class="col-xs-4">
+                                <label>售后类型:</label>
+                                <span>{{asApplyTypes[asApply.applyType-1]}}</span>
+                            </p>
+                            <!--<p class="col-xs-3">-->
+                            <!--<label>快递公司:</label>-->
+                            <!--<span>{{asApplyTypes[asApply.expressCompanyName]}}</span>-->
+                            <!--</p>-->
+                            <!--<p class="col-xs-3">-->
+                                <!--<label>快递单号:</label>-->
+                                <!--<a ng-click="$event.stopPropagation();"-->
+                                   <!--href="http://www.baidu.com/s?wd=快递%20{{asApply.courier}}"-->
+                                   <!--target="_blank">{{asApply.courier}}-->
+                                <!--</a>-->
+                            <!--</p>-->
+                            <p class="col-xs-4 text-right" ng-hide="asApplyTypes[asApply.applyType-1] =='退货'">
+                                {{asApply.createTime | date: 'yyyy年MM月dd日'}}
+                            </p>
+                        </div>
+                        <div class="row" ng-hide="asApplyTypes[asApply.applyType-1] =='换货'||asApplyTypes[asApply.applyType-1]=='维修'">
+                            <p class="col-xs-4">
+                                <label>账户类型:</label>
+                                <span>{{accountType[asApply.refundWay-1]}}</span>
+                            </p>
+                            <p class="col-xs-4">
+                                <label>账户:</label>
+                                <span>{{asApply.refundAccount}}</span>
+                            </p>
+                            <p class="col-xs-4 text-right">
+                                {{asApply.createTime | date: 'yyyy年MM月dd日'}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="showProcess" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header" style="border-bottom: none">
+                        <h5 class="modal-title">售后处理进度</h5>
+                    </div>
+                    <div class="modal-body clearfix">
+                        <div class="wrapper-xs clearfix">
+                            <table class="table">
+                                <tbody>
+                                <tr>
+                                    <td>时间</td>
+                                    <td>部门</td>
+                                    <td>操作员</td>
+                                    <td>操作细节</td>
+                                </tr>
+                                <tr ng-repeat="asAction in asActions">
+                                    <td class="text-danger" width="30%" ng-bind="asAction.endTime | date:'yyyy年MM月dd日 HH:mm:ss'"></td>
+                                    <td ng-bind="asAction.unit" width="20%"></td>
+                                    <td>{{asAction.human}}</td>
+                                    <td>{{asAction.operation}}</td>
+                                </tr>
+                                <tr ng-if="asActions.length <= 0 ">
+                                    <td>暂无售后申请</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                            关 闭
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

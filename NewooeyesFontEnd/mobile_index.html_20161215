@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>云新眼</title>
+
+    <link rel="stylesheet" href="public/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/index.css"/>
+    <link rel="stylesheet" href="css/mobile.css"/>
+
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="navbar-header">
+        <div class="navbar-right"><button type="button" id="cloudService" class=" btn btn-buy">
+            云存储
+        </button></div>
+
+        <a class="navbar-brand" href="#"><img id="logo" src="img/logo.png" alt=""/></a>
+    </div>
+</nav>
+
+<div class="video">
+    <div class="container">
+        <div class="row">
+            <video controls preload="none" id="video" src="img/new_ad_whole.mp4" poster="img/new_ad_whole.jpg"
+                   style="width: 100%;height:180px;background-color: #000000;"></video>
+        </div>
+    </div>
+</div>
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <p><img src="img/index-bg23.jpg" alt=""/></p>
+            </div>
+            <div class="col-sm-6" data-scroll-reveal>
+                <h3>随时随地打开手机即可查看</h3>
+
+                </br></br>
+                <ul class="list-unstyled">
+                    <li><p>远程查看--随时随地用手机观看门铃状况</p></li>
+                    <li><p>实时提醒--实时向手机发送门铃提醒信息</p></li>
+                    <li><p>安全监控--安全的传输通道，防止隐私被窥探</p></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="section no-border">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <p><img src="img/product_02.jpg" alt=""/></p>
+            </div>
+            <div class="col-sm-6" data-scroll-reveal>
+                <h3 class="">可视对讲，沟通无障碍</h3>
+
+                </br></br>
+                <ul class="list-unstyled">
+                    <li><p>远程查看--随时随地用手机观看门铃状况</p></li>
+                    <li><p>实时提醒--实时向手机发送门铃提醒信息</p></li>
+                    <li><p>安全监控--安全的传输通道，防止隐私被窥探</p></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <span class="h3">六大特点,凸显卓越性能</span>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 30px;">
+            <div class="col-sm-2 card ">
+                <div class="text-center">
+                    <img src="img/advantage_01.png" alt=""/>
+
+                    <p class="text-left">
+                        手机上实时远程监控，随时随地接听来访者的音视频对话
+                    </p>
+                </div>
+            </div>
+            <div class="col-sm-2 card">
+                <div class="text-center">
+                    <img src="img/advantage_02.png" alt=""/>
+
+                    <p class="text-left">清晰记录访客的照片，保留来访的详细信息</p>
+                </div>
+
+            </div>
+            <div class="col-sm-2 card">
+                <div class="text-center">
+                    <img src="img/advantage_03.png" alt=""/>
+
+                    <p class="text-left">最高级别的AES256加密技术，从摄像到云存储，一路保护您的隐私</p>
+                </div>
+            </div>
+            <div class="col-sm-2 card">
+                <div class="text-center">
+                    <img src="img/advantage_04.png" alt=""/>
+
+                    <p class="text-left">苹果IOS 6.0/安卓 4.0以上系统的全平台支持
+                    </p>
+                </div>
+                </p></div>
+            <div class="col-sm-2 card">
+                <div class="text-center">
+                    <img src="img/advantage_05.png" alt=""/>
+
+                    <p class="text-left">
+                        异常动态即刻录像并推送消息提醒，做到有据可查，最快知晓
+                    </p>
+                </div>
+            </div>
+            <div class="col-sm-2 card">
+                <div class="text-center">
+                    <img src="img/advantage_06.png" alt=""/>
+
+                    <p class="text-left">多帐户共享设备，同时获取来访信息，避免遗漏</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="footer text-white">
+    <div class="text-center">
+        <div class="container" style="padding-top: 30px;padding-bottom: 30px;">
+            <div class="row">
+                <div class="col-sm-12"><h4>获取最新 云新眼 App !</h4></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <button id="newooeyesApp" class="btn btn-download-app">下载 云新眼App</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12" style="margin-top: 15px;">
+                    <p>鄂ICP备16006328号</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="public/jquery/jquery.min.js"></script>
+<script src="js/mobile_index.js"></script>
+</body>
+</html>

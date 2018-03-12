@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app>
+	<display-name>NewooEyes Device Connection and Upload/Download Server</display-name>
+	<Manager className="org.apache.catalina.session.PersistentManager"
+		saveOnRestart="false" />
+	<!-- DWR配置 -->
+	<servlet>
+		<servlet-name>dwr-invoker</servlet-name>
+		<servlet-class>org.directwebremoting.servlet.DwrServlet
+		</servlet-class>
+
+		<!-- This should NEVER be present in live -->
+		<init-param>
+			<param-name>debug</param-name>
+			<param-value>false</param-value>
+		</init-param>
+
+		<!-- Remove this unless you want to use active reverse ajax -->
+		<init-param>
+			<param-name>activeReverseAjaxEnabled</param-name>
+			<param-value>true</param-value>
+		</init-param>
+
+		<!-- By default DWR creates application scope objects when they are first 
+			used. This creates them when the app-server is started -->
+		<init-param>
+			<param-name>initApplicationScopeCreatorsAtStartup</param-name>
+			<param-value>true</param-value>
+		</init-param>
+
+		<!-- This enables full streaming mode. It's probably better to leave this 
+			out if you are running across the internet -->
+		<init-param>
+			<param-name>maxWaitAfterWrite</param-name>
+			<param-value>-1</param-value>
+		</init-param>
+
+		<!-- For more information on these parameters, see: - http://getahead.org/dwr/server/servlet 
+			- http://getahead.org/dwr/reverse-ajax/configuration -->
+		<init-param>
+			<param-name>crossDomainSessionSecurity</param-name>
+			<param-value>false</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>dwr-invoker</servlet-name>
+		<url-pattern>/dwr/*</url-pattern>
+	</servlet-mapping>
+
+	<!-- 编码转换 -->
+	<filter>
+		<filter-name>Set Character Encoding</filter-name>
+		<filter-class>com.ovt.filter.SetCharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>ignore</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>Set Character Encoding</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<session-config>
+		<session-timeout>120</session-timeout>
+	</session-config>
+</web-app>
+

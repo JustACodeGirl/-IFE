@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--多个配置文件里的交叉引用可以用ref的external或bean解决 -->
+<!--需要事务控制的BEAN采用*Service命名，注明autowire="byName"，如下 -->
+<!--bean id="userService" class="some.package.UserServiceImpl" autowire="byName"/ -->
+<!--部署到服务器上，目录需要修改，如将E:/.../WebContent/修改为/opt/ovt_oa_file/ -->
+
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
+	http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd">
+
+	<task:annotation-driven executor="myExecutor"
+		scheduler="myScheduler" />
+	<!-- Spring使用的线程池，异步调用会使用到，queue-capacity表示最多允许等待执行任务数，如果超出，会抛出异常 -->
+	<task:executor id="myExecutor" pool-size="10-50"
+		queue-capacity="50000" />
+	<task:scheduler id="myScheduler" pool-size="10" />
+
+	<!--系统配置服务 -->
+	<bean id="configManager" class="com.ovt.service.ConfigService">
+		<property name="systemConfig" ref="systemConfig" />
+	</bean>
+
+	<!-- 系统参数 -->
+	<util:map id="systemConfig">
+		<!-- 系统内文件服务器的映射地址 -->
+		<entry key="uploadPath" value="/mnt/mydata/newooeyes/" />
+		<!-- Command Server的IP -->
+		<entry key="ip" value="192.168.1.187" />
+		<!-- Web Root -->
+		<entry key="webRoot" value="http://116.211.106.187/" />
+
+		<!-- 服务器协议的版本号 -->
+		<entry key="protocolVersion" value="00.00.01.00" />
+
+		<!-- 云存储的根路径 -->
+		<entry key="cloudRoot" value="jinzhong" />
+		<!-- 是否启用云存储，1：使用，0：不使用 -->
+		<entry key="useCloudStore" value="0" />
+	</util:map>
+
+	<!-- 数据转发服务 -->
+	<bean id="dataTransferService" class="com.ovt.service.DataTransferService"
+		scope="singleton" autowire="byName" lazy-init="true">
+		<constructor-arg index="0">
+			<ref bean="configManager" />
+		</constructor-arg>
+	</bean>
+</beans>

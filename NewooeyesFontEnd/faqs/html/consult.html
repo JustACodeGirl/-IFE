@@ -1,0 +1,30 @@
+<div class="content" ng-controller="ConsultCtrl">
+    <div class="row" ng-if="app.user">
+        <div class="col-xs-12">
+            <div class="widget">
+                <a class="btn btn-primary btn-bl" ui-sref="consult.new">新建咨询</a>
+            </div>
+            <div class="widget">
+            <div class="row m-b" ng-repeat="consult in consultList | orderBy: 'createTime':true">
+                <div class="item col-xs-12"
+                     style="border: 1px solid #e7e7e7; border-radius:5px; box-shadow: -1px 2px 2px -1px #ededed;"
+                     ng-click="showConsultDetail(consult.id)">
+                    <h5 class="title">
+                        <a href="" ng-bind="consult.title"></a>
+                    </h5>
+                    <p class="preview"
+                       ng-bind="consult.content.length < 100 ? consult.content : consult.content.substr(0, 100).concat('...')"></p>
+                    <p class="meta">
+              <span class="label"
+                    ng-class="{true:'label-danger', false:'label-default'}[consult.status==0]"
+                    ng-bind="consultStatus[consult.status]"></span>
+                        &nbsp;&nbsp;&nbsp;
+                        <span ng-bind="consult.createTime | date: 'yyyy年MM月dd日 HH:mm'"></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+</div>

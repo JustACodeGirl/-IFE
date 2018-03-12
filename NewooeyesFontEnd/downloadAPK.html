@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>下载APK</title>
+    <meta name="viewport"
+          content="width=320.1, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <style type="text/css">
+        body {
+            height: 100%;
+            background: #000000;
+            font-family: "Microsoft Yahei", "proxima-nova", Arial, sans-serif;
+        }
+
+        #androidHint img {
+            width: 100%;
+        }
+
+        #androidHint h3 {
+            text-align: center;
+            font-size: 1.5em;
+            color: #8b8b8b;
+            margin-top: 50px;
+        }
+
+        #androidHint button {
+            padding: 15px 20px;
+            font-size: 1.5em;
+            color: #FFFFFF;
+            border-radius: 10px;
+            background-color: #337ab7;
+            font-family: "Microsoft Yahei", "proxima-nova", Arial, sans-serif;
+        }
+
+        #androidHint button:hover,
+        #androidHint button:active,
+        #androidHint button:focus {
+            background-color: #2b689c;
+        }
+    </style>
+    <script>
+        var u = navigator.userAgent || '';
+        var isPC = !/(iphone|ios|android|mini|mobile|mobi|Nokia|Symbian|iPod|iPad|Windows\s+Phone|MQQBrowser|wp7|wp8|UCBrowser7|UCWEB|360\s+Aphone\s+Browser)/i.test(u);
+        if (isPC) {
+            location.href = "http://www.newooeyes.com/newooeyes.apk";
+        }
+    </script>
+    <script>
+        var isPC = false;
+        var e = navigator.userAgent ? navigator.userAgent.toLowerCase() : '';
+        var iswx = /micromessenger/.test(e) ? !0 : !1;
+        var wxurl = '';
+        if (iswx) {
+            wxurl = "http://mp.weixin.qq.com/mp/redirect?url=";
+        }
+
+        function hello() {
+            var appUrl = "http://www.newooeyes.com/newooeyes.apk";
+
+            if (iswx) {
+                document.body.style.background = '#000000';
+                document.getElementById('wxHint').style.display = 'block';
+                document.getElementById('androidHint').style.display = 'none';
+            } else {
+                document.body.style.background = '#FFFFFF';
+                document.getElementById('wxHint').style.display = 'none';
+                document.getElementById('androidHint').style.display = 'block';
+            }
+
+            if (!isPC && !iswx) {
+                if (appUrl) {
+                    location.href = appUrl;
+                } else if (sid) {
+                    location.href = "/m/" + sid;
+                }
+            }
+        }
+    </script>
+
+</head>
+<body onload="hello()">
+<div id="wxHint" style="position:absolute; top: 10%;display: none;">
+    <p><img src="wx-hint.jpg" alt="" style="width: 100%;"/></p>
+</div>
+<div id="androidHint" style="position:absolute; top: 15%;display: none;">
+    <p><img src="logo.jpg" alt=""/></p>
+
+    <h3>即将自动下载云新眼App</h3>
+
+    <p style="text-align: center; margin-top: 30%;">
+        <button onclick="location.href='http://www.newooeyes.com/newooeyes.apk'">点击此处下载</button>
+    </p>
+</div>
+</body>
+</html>

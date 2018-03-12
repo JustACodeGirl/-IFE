@@ -1,0 +1,123 @@
+<div class="content" ng-controller="ConsultDetailCtrl">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="widget">
+        <a class="btn btn-primary btn-bl" ui-sref="consult.list">返回咨询列表</a>
+
+      </div>
+      <div class="btn-group pull-right" ng-if="consult">
+        <button type="button"
+                class="btn btn-default dropdown-toggle"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false">{{consultStatus[consult.status]}}&nbsp;&nbsp;
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <li ng-if="consult.status==0" style="list-style-type:none ">
+            <a href="" ng-click="changeConsultStatus(1)">关闭</a>
+          </li>
+          <li ng-if="consult.status==1" style="list-style-type:none ">
+            <a href="" ng-click="changeConsultStatus(0)">重启</a>
+          </li>
+        </ul>
+      </div>
+      <h1 class="widget" ng-bind="consult.title"></h1>
+    </div>
+  </div>
+    <div class="line" ng-if="consult"></div>
+    <div class="row">
+        <div class="col-xs-12 m-b">
+            <div class="row">
+                <div class="col-xs-12 m-b">
+                    <span ng-bind="consult.createTime | date: 'yyyy年MM月dd日 HH:mm:ss'"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <p ng-bind-html="consult.content | to_trusted"></p>
+                </div>
+            </div>
+            <div class="row" ng-if="consult.attach1Url">
+                <div class="col-xs-12">
+                    <p class="attach" img-load ng-model="consult.attach1Url"></p>
+                </div>
+            </div>
+            <div class="row" ng-if="consult.attach2Url">
+                <div class="col-xs-12">
+                    <p class="attach" img-load ng-model="consult.attach2Url"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="line" ng-if="consult"></div>
+
+    <div class="row widget text-muted m-l" ng-if="consult">
+      <div class="col-xs-12">
+        <div class="m-b" ng-repeat="reply in consultReplies">
+          <p ng-bind="reply.createTime | date: 'yyyy年MM月dd日 HH:mm:ss'"></p>
+
+          <p class="bg-light reply">
+            <span ng-if="reply.creator != app.user.userID">客服{{reply.creator}}:</span>
+            <span ng-if="reply.creator == app.user.userID">我:</span>
+            <span ng-bind-html="reply.content | to_trusted"></span>
+          <span class="attach" style="display: block;" ng-if="reply.attach1Url" img-load
+                ng-model="reply.attach1Url"></span>
+          <span class="attach" style="display: block;" ng-if="reply.attach2Url" img-load
+                ng-model="reply.attach2Url"></span>
+          </p>
+        </div>
+      </div>
+    </div>
+      <div class="line" ng-if="consult && consult.status==0 && consultReplies && consultReplies.length > 0"></div>
+      <div class="row widget" ng-if="consult && consult.status==0">
+          <div class="col-xs-12">
+              <form name="newReply">
+                  <div class="form-group">
+                      <label for="reply">回复:</label>
+          <textarea name="reply"
+                    id="reply"
+                    rows="3"
+                    class="form-control"
+                    ng-model="reply.content"
+                    ng-maxlength="100"
+                    required>
+          </textarea>
+          <span style="color: red"
+                ng-show="newReply.reply.$dirty && newReply.reply.$invalid">长度超过100字，请精简回复内容</span>
+
+                  </div>
+                  <div class="form-group widget">
+                      <div class="row">
+                          <div class="col-xs-6" ng-if="attachs[0]">
+                              <label for="attach1">附图1：{{attachs[0].name}}</label>
+
+                              <p class="attach" id="attach1" img-load ng-model="attachs[0].url"></p>
+                              <button type="button" class="btn btn-default btn-xs" ng-click="attachs[0].remove();attachs[0]=null">
+                                  删除
+                              </button>
+                          </div>
+                          <div class="col-xs-6" ng-if="attachs[1]">
+                              <label for="attach2">附图2：{{attachs[1].name}}</label>
+
+                              <p class="attach" id="attach2" img-load ng-model="attachs[1].url"></p>
+                              <button type="button" class="btn btn-default btn-xs" ng-click="attachs[1].remove();attachs[1]=null">
+                                  删除
+                              </button>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="form-group widget">
+                      <label for="file">添加附图（JPG/PNG/GIF，2 MB以内，限两张）</label>
+                      <input id="file" nv-file-select uploader="uploader" type="file" accept="image/jpeg, image/gif, image/png"/>
+                  </div>
+                  <div class="form-group">
+                      <button type="submit"
+                              class="btn btn-primary"
+                              ng-click="newReply.$valid ? replyConsult(reply, attachs) : null;">提交
+                      </button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>

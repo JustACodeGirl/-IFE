@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>云新眼</title>
+    <link rel="stylesheet" href="public/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="public/toast/toastr.css"/>
+    <link rel="stylesheet" href="css/index.css"/>
+    <link rel="stylesheet" href="css/main.css"/>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->    <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>    <![endif]--></head>
+<body style="background: #FFFFFF">
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#"><img src="img/logo.png" alt="" id="logo"/></a></div>
+        <div id="navbar" class=" ">
+            <ul class="nav navbar-nav none text-center" id="myMenu">
+                <li class=""><a href="index.html">首 页</a></li>
+                <li><a href="detail.html">技术参数</a></li>
+                <li><a href="instance.html" class="text-danger">案 例</a></li>
+                <li><a href="faqs/faq.html">帮助中心</a></li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li><a href="javascript:;" id="cloudService" class="text-center">
+                    <button class="btn btn-buy">云存储</button>
+                </a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container login">
+    <div class="">
+        <div class="text-center signin-header"><h3></h3></div>
+        <form name="signin" class="form-signin"><h3 class="form-signin-heading text-center">登 录</h3>            <h6
+                class="text-muted">*使用NewooEyes账号登录</h6>            <label for="userName" class="sr-only">手机号</label>
+            <input type="text" id="userName" class="form-control" placeholder="手机号" maxlength="11" required autofocus/>
+            <label for="password" class="sr-only">密码</label> <input type="password" id="password" class="form-control" maxlength="20"
+                                                                    placeholder="密码" required/>
+
+            <div class="checkbox"><label><input type="checkbox" value="remember-me"/> 记住我</label></div>
+            <button type="submit" class="btn btn-lg btn-primary btn-block btn-bl">登 录</button>
+        </form>
+    </div>
+</div>
+<script src="public/jquery/jquery.min.js"></script>
+<script src="public/bootstrap/js/bootstrap.min.js"></script>
+<script src="public/toast/toastr.js"></script>
+<script src="js/singin.js"></script>
+</body>
+</html>

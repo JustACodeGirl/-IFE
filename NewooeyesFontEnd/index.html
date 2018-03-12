@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="智能门铃,doorbell,ring">
+    <meta name="description" content="云新眼(NewooEyes)智能门铃,您身边真正的安全管家！远程查看--随时随地用手机观看门铃状况;实时提醒--实时向手机发送门铃提醒信息;安全监控--安全的传输通道，防止隐私被窥探。">
+    <meta name="author" content="sttvision">
+    <meta name="baidu-site-verification" content="4XUU3S7Li8" />
+    <title>智能门铃-云新眼</title>
+
+    <script>
+    (function browserRedirect() {
+        var sUserAgent = navigator.userAgent.toLowerCase();
+        var bIsIpad = sUserAgent.match(/ipad/i) == 'ipad';
+        var bIsIphone = sUserAgent.match(/iphone os/i) == 'iphone os';
+        var bIsMidp = sUserAgent.match(/midp/i) == 'midp';
+        var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == 'rv:1.2.3.4';
+        var bIsUc = sUserAgent.match(/ucweb/i) == 'web';
+        var bIsAndroid = sUserAgent.match(/android/i) == "android";
+        var bIsCE = sUserAgent.match(/windows ce/i) == 'windows ce';
+        var bIsWM = sUserAgent.match(/windows mobile/i) == 'windows mobile';
+
+        if (bIsIpad || bIsIphone || bIsMidp || bIsUc7 || bIsAndroid || bIsUc || bIsCE || bIsWM) {
+            if(window.screen.width <= 768){
+                window.location.href = 'mobile_index.html';
+            }
+        }
+    })();
+</script>
+
+    <link rel="stylesheet" href="public/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/video-js.min.css"/>
+    <link rel="stylesheet" href="css/index.css"/>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#"><img id="logo" src="img/logo.png" alt="智能门铃Newooeyes"/></a>
+        </div>
+        <div id="navbar">
+            <ul class="nav navbar-nav text-center" id="myMenu">
+                <li class=""><a href="index.html">首 页</a></li>
+                <li><a href="detail.html">技术参数</a></li>
+                <li><a href="instance.html" class="text-danger">案 例</a></li>
+                <li><a href="faqs/faq.html">帮助中心</a></li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li><a href="javascript:;" id="cloudService" class="text-center">
+                    <button class="btn btn-buy">云存储</button>
+                </a></li>
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a class="text-center">
+                        <button id="signBtn" class="btn btn-default">登录</button>
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a style="margin-right: 10px; color: black!important;cursor: pointer;font-size: 0.8em;"
+                       id="signName"
+                       class="text-center"></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="banner">
+    <div class="container">
+        <div class="row" style="margin-top: 85px;">
+            <div class="col-xs-6" style="margin-left: 5%;">
+                <video class="video-js vjs-default-skin" controls preload="none" width="480" height="320"
+                       poster="img/new_ad_whole.jpg"
+                       data-setup="{}">
+                    <source src="img/new_ad_whole.mp4" type='video/mp4'/>
+                </video>
+            </div>
+            <div class="col-xs-5 text-white" data-scroll-reveal>
+                <h2 class="">云新眼(NewooEyes)智能门铃</h2>
+
+                <h2>您身边真正的安全管家！</h2>
+                </br>
+                </br>
+                <ul class="list-unstyled">
+                    <li><p>远程查看--随时随地用手机观看门铃状况</p></li>
+                    <li><p>实时提醒--实时向手机发送门铃提醒信息</p></li>
+                    <li><p>安全监控--安全的传输通道，防止隐私被窥探</p></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section">
+    <div class="container wrapper">
+        <div class="row" style="margin-top: 85px;">
+
+            <div class="col-xs-6" data-scroll-reveal>
+                <h2 class="">随时随地打开手机即可查看</h2>
+
+                </br>
+                </br>
+                <ul class="list-unstyled">
+                    <li><p>远程查看--随时随地用手机观看门铃状况</p></li>
+                    <li><p>实时提醒--实时向手机发送门铃提醒信息</p></li>
+                    <li><p>安全监控--安全的传输通道，防止隐私被窥探</p></li>
+                </ul>
+            </div>
+            <div class="col-xs-6">
+                <p><img src="img/index-bg23.jpg" alt="智能门铃Newooeyes" width="100%"/></p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section no-border">
+    <div class="container wrapper">
+        <div class="row">
+            <div class="col-xs-12" style="border-bottom: 1px solid #d8d8d8;"></div>
+        </div>
+        <div class="row" style="margin-top: 85px;">
+            <div class="col-xs-4 col-xs-offset-1">
+                <p><img src="img/product_02.jpg" alt="" width="90%"/></p>
+            </div>
+            <div class="col-xs-6 text-right" data-scroll-reveal>
+                <h2 class="">可视对讲，沟通无障碍</h2>
+
+                </br>
+                </br>
+                <ul class="list-unstyled">
+                    <li><p>远程查看--随时随地用手机观看门铃状况</p></li>
+                    <li><p>实时提醒--实时向手机发送门铃提醒信息</p></li>
+                    <li><p>安全监控--安全的传输通道，防止隐私被窥探</p></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="section">
+    <div class="container wrapper">
+        <div class="row">
+            <div class="col-xs-12">
+                <span class="h3">六大特点,凸显卓越性能</span>
+                <span style="position: absolute;right: 0;top:20px;width: auto;left: 270px;border-bottom: 1px solid #d8d8d8;"></span>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 30px;" data-scroll-reveal>
+            <div class="col-xs-2 card ">
+                <div class="text-center">
+                    <img src="img/advantage_01.png" alt="智能门铃Newooeyes"/>
+
+                    <p class="text-left">
+                        手机上实时远程监控，随时随地接听来访者的音视频对话
+                    </p>
+                </div>
+            </div>
+            <div class="col-xs-2 card">
+                <div class="text-center">
+                    <img src="img/advantage_02.png" alt="智能门铃Newooeyes"/>
+
+                    <p class="text-left">清晰记录访客的照片，保留来访的详细信息</p>
+                </div>
+
+            </div>
+            <div class="col-xs-2 card">
+                <div class="text-center">
+                    <img src="img/advantage_03.png" alt="智能门铃Newooeyes"/>
+
+                    <p class="text-left">最高级别的AES256加密技术，从摄像到云存储，一路保护您的隐私</p>
+                </div>
+            </div>
+            <div class="col-xs-2 card">
+                <div class="text-center">
+                    <img src="img/advantage_04.png" alt="智能门铃Newooeyes"/>
+
+                    <p class="text-left">苹果IOS 6.0/安卓 4.0以上系统的全平台支持
+                    </p>
+                </div>
+                </p></div>
+            <div class="col-xs-2 card">
+                <div class="text-center">
+                    <img src="img/advantage_05.png" alt="智能门铃Newooeyes"/>
+
+                    <p class="text-left">
+                        异常动态即刻录像并推送消息提醒，做到有据可查，最快知晓
+                    </p>
+                </div>
+            </div>
+            <div class="col-xs-2 card">
+                <div class="text-center">
+                    <img src="img/advantage_06.png" alt="智能门铃Newooeyes"/>
+
+                    <p class="text-left">多帐户共享设备，同时获取来访信息，避免遗漏</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer text-white">
+    <div class="text-center">
+        <div class="container" style="padding-top: 30px;padding-bottom: 30px;">
+            <div class="row">
+                <div class="col-xs-5 col-xs-offset-2">
+                    <div class="row">
+                        <div class="col-xs-12"><h4>获取最新 NewooEyes App !</h4></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <a href="https://itunes.apple.com/app/id1100090322?mt=8">
+                                <button class="btn btn-download-app">下载 IOS App</button>
+                            </a>
+                        </div>
+                        <div class="col-xs-6">
+                            <a href="http://www.newooeyes.com/newooeyes.apk">
+                                <button class="btn btn-download-app">下载 Android App</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-4 widget-hide text-center" style="margin-top: 20px;">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <img alt="Download On App Store"
+                                 style="height: 80px;"
+                                 src="img/iOS_QR_Logo.png">
+                            <img alt="Download On Google Play" style="height: 80px; margin-left: 80px;"
+                                 src="img/android_QR_Logo.png">
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h5 style="display: inline-block; width: 80px;">IOS</h5>
+                            <h5 style="display: inline-block; width: 80px; margin-left: 80px;">Android</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <p>鄂ICP备16006328号</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="public/jquery/jquery.min.js"></script>
+<script src="public/scrollReveal/scrollReveal.js"></script>
+<script src="js/video.min.js"></script>
+<script src="js/singin.js"></script>
+<script>
+    window.scrollReveal = new scrollReveal({
+        over: '0.8s',
+        reset: true,
+        init: true
+    });
+</script>
+</body>
+</html>

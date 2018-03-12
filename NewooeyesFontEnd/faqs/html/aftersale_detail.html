@@ -1,0 +1,76 @@
+<div class="container-narrow"
+     style="padding-left: 0;padding-right: 0"
+     ng-controller="AsApplyViewCtrl">
+    <form>
+        <div class="form-header text-center m-b-md">
+            <a ui-sref="aftersale.list"
+               class="btn btn-danger pull-right no-border "
+               style="border-radius: 0; margin-top: -1px;">X
+            </a>
+            <h3>售后申请单</h3>
+        </div>
+        <div class="form-content">
+            <div class="form-group m-b-md">
+                <span>申请售后类型: &nbsp;&nbsp;</span>
+                <label>{{asApplyTypes[applyInfo.applyType-1]}}</label>
+            </div>
+            <div class="form-group m-b-md">
+                <span>您的设备是: &nbsp;&nbsp;</span>
+                <label>{{goodsList[applyInfo.goodsId-1].name}}</label>
+            </div>
+            <div class="form-group m-b-md">
+                <span>商品编号: &nbsp;&nbsp;</span>
+                <label>{{applyInfo.goodsNo}}</label>
+            </div>
+            <div class="form-group m-b-md">
+                <span>购买时间: &nbsp;&nbsp;</span>
+                <label>{{applyInfo.goodsBuyTime | date: 'yyyy年MM月dd日'}}</label>
+            </div>
+            <div class="form-group m-b-md">
+                <span>您的 {{goodsList[applyInfo.goodsId-1].name}} App 账号: &nbsp;&nbsp;</span>
+                <label>{{applyInfo.appAccount}}</label>
+            </div>
+            <div class="form-group m-b-md">
+                <span>申请原因: &nbsp;&nbsp;</span>
+                <label ng-bind="applyInfo.applyReasonId == 10 ?  '其他': applyReasons[applyInfo.applyReasonId-1].name"></label>
+            </div>
+            <div class="form-group m-b-md">
+                <span>您的设备出现了什么问题: &nbsp;&nbsp;</span>
+                <label style="word-wrap: break-word;" ng-bind="applyInfo.applyReason"></label>
+            </div>
+            <!--<div class="form-group m-b-md">-->
+            <!--<span>快递公司: &nbsp;&nbsp;</span>-->
+            <!--<label ng-bind="applyInfo.expressCompanyName"></label>-->
+            <!--</div>-->
+            <!--<div class="form-group m-b-md">-->
+                <!--<span>快递单号: &nbsp;&nbsp;</span>-->
+                <!--<label ng-bind="applyInfo.courier"></label>-->
+            <!--</div>-->
+            <div class="form-group m-b-md">
+                <span>您的姓名: &nbsp;&nbsp;</span>
+                <label ng-bind="applyInfo.userName"></label>
+            </div>
+            <div class="form-group m-b-md">
+                <span>您的联系电话: &nbsp;&nbsp;</span>
+                <label ng-bind="applyInfo.userContact"></label>
+            </div>
+            <div class="form-group m-b-md">
+                <span>您的邮寄地址: &nbsp;&nbsp;</span>
+                <label ng-bind="applyInfo.address"></label>
+            </div>
+            <div class="form-group m-b-md"
+                 ng-hide="(asApplyTypes[applyInfo.applyType-1] =='换货')||(asApplyTypes[applyInfo.applyType-1]=='维修')">
+                <span>您的退款方式: &nbsp;&nbsp;</span>
+                <label ng-bind="accountType[applyInfo.refundWay-1]"></label>
+            </div>
+            <div class="form-group m-b-md"
+                 ng-hide="(asApplyTypes[applyInfo.applyType-1] =='换货')||(asApplyTypes[applyInfo.applyType-1]=='维修')">
+                <span>您的{{accountType[applyInfo.refundWay-1]}}账号: &nbsp;&nbsp;</span>
+                <label ng-bind="applyInfo.refundAccount"></label>
+            </div>
+        </div>
+        <div class="form-footer text-center">
+
+        </div>
+    </form>
+</div>

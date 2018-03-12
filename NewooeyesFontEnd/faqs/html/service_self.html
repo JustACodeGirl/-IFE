@@ -1,0 +1,27 @@
+<div class="" style="padding-left: 0;padding-right: 0" ng-controller="SelfServiceCtrl as ssc">
+    <form name="newAsApply">
+        <div class="form-header text-center m-b-md">
+            <h3></h3>
+        </div>
+        <div class="form-content">
+            <div class="form-group m-b-md slide-up" ng-repeat="question in ssc.questionShowList">
+                <label ng-if="question.title">{{question.title}}
+                    <span class="text-danger">*</span>
+                </label>
+                <div ng-if="question.answer.type == 'radio'">
+                    <div class="text-muted" ng-if="question.answer.content != ''" ng-bind-html="question.answer.content | to_trusted"></div>
+                    <div class="radio" ng-repeat="option in question.answer.options">
+                        <label><input type="radio"
+                                      value="{{$index}}"
+                                      ng-model="question.model"
+                                      ng-click="ssc.showNext(question, option.target)"/>{{option.name}}
+                        </label>
+                    </div>
+                </div>
+                <div ng-if="question.answer.type == 'text'">
+                    <div class="text-muted" ng-if="question.answer.content != ''" ng-bind-html="question.answer.content | to_trusted"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

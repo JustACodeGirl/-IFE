@@ -1,0 +1,55 @@
+<div class="row">
+    <div class="col-xs-12">
+        <h1></h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-4">
+        <a class="video" data-src="../img/install.mp4"><img src="../img/install.png" alt=""/></a>
+        <h5 class="text-center">安装设备</h5>
+    </div>
+    <div class="col-xs-4">
+        <a class="video" data-src="../img/wifi.mp4"><img src="../img/wifi.png" alt=""/></a>
+        <h5 class="text-center">设置Wifi</h5>
+    </div>
+    <div class="col-xs-4">
+        <a class="video" data-src="../img/led.mp4"><img src="../img/led.png" alt=""/></a>
+        <h5 class="text-center">LED灯说明</h5>
+    </div>
+</div>
+<div style="margin-top: 100px;margin-left: 20px;font-size: 16px">云新眼用户手册下载链接：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="NewooEyesMaunalBooks/NewooEyes User Manual_CN.pdf"  download="云新眼用户使用手册中文文档.pdf"
+       class="btn btn-download"
+       style="font-size: 16px;text-decoration: none;color: #fff">中文文档下载</a>
+    <a href="NewooEyesMaunalBooks/NewooEyes User Manual_EN.pdf"  download="NewooEyes User Manual_EN.pdf"
+       class="btn btn-download"
+       style="font-size: 16px;text-decoration: none;color: #fff;margin-left: 25px">英文文档下载</a>
+</div>
+<div style="margin-top: 30px;margin-left: 20px;font-size: 16px">云新眼快速使用手册下载链接：
+    <a href="NewooEyesMaunalBooks/NewooEyes Quick Start Manual_CN.pdf" download="云新眼快速使用手册中文文档.pdf"
+       class="btn btn-download"
+       style="font-size: 16px;text-decoration: none;color: #fff">中文文档下载</a>
+    <a href="NewooEyesMaunalBooks/NewooEyes Quick Start Manual_EN.pdf" download="NewooEyes Quick Start Manual_EN.pdf"
+       class="btn btn-download"
+       style="font-size: 16px;text-decoration: none;color: #fff;margin-left: 25px">英文文档下载</a>
+</div>
+<div class="modal fade" id="videoModal">
+    <div class="modal-dialog">
+        <div class="modal-content modal-content-black">
+            <div class="modal-body">
+                <video controls autoplay id="videoWin" src="#" style="width: 100%"></video>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $("a.video").click(function () {
+        $('#videoWin').attr('src', $(this).attr('data-src'));
+        $('#videoModal').modal();
+    });
+    $('#videoModal').on('hide.bs.modal', function (e) {
+        if (!$('#videoWin')[0].paused) {
+            $('#videoWin')[0].pause();
+        }
+    });
+</script>
